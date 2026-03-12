@@ -23,23 +23,3 @@ The project requires Python 3.8+ and the following libraries:
 Install all dependencies using:
 ```bash
 pip install -r requirements.txt
-🚀 Usage
-1. Training (Phase 1 & 2)
-Run the train.py script to perform both contrastive pre-training and supervised fine-tuning.
-
-Bash
-
-python train.py --data_path ./data/ --checkpoint_path ./models/best_model.pth --pretrain_epochs 30 --epochs 30
---data_path: Directory containing train.csv and an images/ folder.
-
---pretrain_epochs: Number of epochs for the SimCLR phase.
-
---epochs: Number of epochs for the fine-tuning phase.
-
-2. Inference
-Use the predict.py script to generate predictions on new test data.
-
-Bash
-
-python predict.py --data_path ./data/test_images/ --model_path ./models/best_model_kaggle.pth --output submission.csv
-The script automatically loads class names and the optimized Threshold Power from the metadata.json file created during training.
