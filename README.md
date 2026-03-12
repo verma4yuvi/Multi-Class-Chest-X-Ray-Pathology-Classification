@@ -4,10 +4,10 @@ This project implements a deep learning framework for the automated detection of
 
 ## 📌 Project Overview
 
-[cite_start]The framework is designed to address key challenges in medical imaging, such as limited labeled data and severe class imbalance[cite: 24].
+The framework is designed to address key challenges in medical imaging, such as limited labeled data and severe class imbalance[cite: 24].
 
-- [cite_start]**Stage 1 (Pre-training):** Uses the SimCLR protocol to train an EfficientNet-v2 backbone on unlabeled images to learn robust visual representations[cite: 14, 55].
-- [cite_start]**Stage 2 (Fine-tuning):** Adapts the pretrained backbone using Focal Loss to prioritize rare pathologies and difficult cases[cite: 15, 95].
+- **Stage 1 (Pre-training):** Uses the SimCLR protocol to train an EfficientNet-v2 backbone on unlabeled images to learn robust visual representations[cite: 14, 55].
+- **Stage 2 (Fine-tuning):** Adapts the pretrained backbone using Focal Loss to prioritize rare pathologies and difficult cases[cite: 15, 95].
 
 ## 🛠️ Requirements
 
@@ -23,3 +23,17 @@ The project requires Python 3.8+ and the following libraries:
 Install all dependencies using:
 ```bash
 pip install -r requirements.txt
+
+## Usage
+1. Training (Phase 1 & 2)
+Run the train.py script to perform both contrastive pre-training and supervised fine-tuning.
+```bash
+python train.py --data_path ./data/ --checkpoint_path ./models/best_model.pth --pretrain_epochs 30 --epochs 30
+--data_path: Directory containing train.csv and an images/ folder.
+--pretrain_epochs: Number of epochs for the SimCLR phase.
+--epochs: Number of epochs for the fine-tuning phase.
+2. Inference
+Use the predict.py script to generate predictions on new test data.
+```bash
+python predict.py --data_path ./data/test_images/ --model_path ./models/best_model_kaggle.pth --output submission.csv
+The script automatically loads class names and the optimized Threshold Power from the metadata.json file created during training.
