@@ -1,30 +1,25 @@
-# Multi-Class-Chest-X-Ray-Pathology-Classification
-In this work, we propose a two-stage training pipeline that combines contrastive representation learning with supervised fine-tuning. The model first learns general visual represen- tations using contrastive learning and is then adapted for pathology classification using supervised training with focal loss.
-## Project Architecture 
-The pipeline consists of two distinct training stages:Stage 1: Contrastive Pre-training (SimCLR): An EfficientNet-v2 backbone is pretrained to learn general visual representations by maximizing agreement between differently augmented views of the same image.Stage 2: Supervised Fine-Tuning: The pretrained backbone is adapted for multi-class classification using Focal Loss to focus the model on rare and difficult disease categories.
-## Key FeaturesBackbone
-EfficientNet-v2-s for efficient scaling and strong feature extraction.Imbalance Handling: Implementation of Focal Loss ($\gamma=2.0$) to mitigate the dominance of the "No Finding" class.Inference Optimization: Uses Threshold Power Optimization to balance precision and recall, and Test-Time Augmentation (TTA) for stable predictions.Performance: Achieves a Macro AUC-ROC of 0.8287 across 19 different pathologies.
-Gemini said
-README: Multi-Class Chest X-Ray Pathology Classification
-This project implements a robust deep learning framework for diagnosing thoracic diseases from chest X-ray images. The system addresses common medical imaging challenges, such as limited labeled data and severe class imbalance, by combining Contrastive Self-Supervised Learning (SimCLR) with Supervised Fine-Tuning using Focal Loss.
-+4
+# Multi-Class Chest X-Ray Pathology Classification
 
-## Project Architecture
-The pipeline consists of two distinct training stages:
-Stage 1: Contrastive Pre-training (SimCLR): An EfficientNet-v2 backbone is pretrained to learn general visual representations by maximizing agreement between differently augmented views of the same image.
-Stage 2: Supervised Fine-Tuning: The pretrained backbone is adapted for multi-class classification using Focal Loss to focus the model on rare and difficult disease categories.
+This project implements a deep learning framework for the automated detection of thoracic diseases from chest X-ray images. [cite_start]It utilizes a two-stage pipeline combining **Contrastive Self-Supervised Learning (SimCLR)** and **Supervised Fine-Tuning** to achieve high diagnostic accuracy even with imbalanced medical datasets[cite: 13, 27].
 
-## Key Features
-Backbone: EfficientNet-v2-s for efficient scaling and strong feature extraction.
-Imbalance Handling: Implementation of Focal Loss (γ=2.0) to mitigate the dominance of the "No Finding" class.
-Inference Optimization: Uses Threshold Power Optimization to balance precision and recall, and Test-Time Augmentation (TTA) for stable predictions.
-Performance: Achieves a Macro AUC-ROC of 0.8287 across 19 different pathologies.
+## 📌 Project Overview
 
-## Installation
-Ensure you have Python 3.8+ installed. You can install the required dependencies using the provided requirements.txt:
-Bash
+[cite_start]The framework is designed to address key challenges in medical imaging, such as limited labeled data and severe class imbalance[cite: 24].
+
+- [cite_start]**Stage 1 (Pre-training):** Uses the SimCLR protocol to train an EfficientNet-v2 backbone on unlabeled images to learn robust visual representations[cite: 14, 55].
+- [cite_start]**Stage 2 (Fine-tuning):** Adapts the pretrained backbone using Focal Loss to prioritize rare pathologies and difficult cases[cite: 15, 95].
+
+## 🛠️ Requirements
+
+The project requires Python 3.8+ and the following libraries:
+- `torch >= 2.0.0`
+- `torchvision >= 0.15.0`
+- `pandas >= 1.5.0`
+- `numpy >= 1.23.0`
+- `scikit-learn >= 1.2.0`
+- `Pillow >= 9.0.0`
+- `tqdm >= 4.65.0`
+
+Install all dependencies using:
+```bash
 pip install -r requirements.txt
-Core Dependencies:
-torch >= 2.0.0 
-torchvision >= 0.15.0 
-pandas, numpy, scikit-learn, Pillow, tqdm 
